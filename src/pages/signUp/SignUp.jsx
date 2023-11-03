@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
@@ -8,6 +8,10 @@ export default function SignUp() {
     const passwordRef= useRef()
     const cnfPasswordRef= useRef()
     const history =useNavigate()
+
+    useEffect(()=>{
+        setTimeout(()=>setMsg("") ,2000)
+    },[msg])
 
     const handleSubmit =(e)=>{
         e.preventDefault();
@@ -26,23 +30,36 @@ export default function SignUp() {
     }
 
   return (
-    <div>
+    <div className='signUpWrapper'>
         
         <span>{msg&& passwordRef.current.value!==cnfPasswordRef.current.value? msg:""}</span>
         
-
-        <form onSubmit={handleSubmit}>
-            <input ref={nameRef} type="text" placeholder='Enter Name' />
-        <span>{msg&&!nameRef.current.value?msg:""}</span>
-            <br />
-            <input ref={passwordRef} type="password" placeholder='*****'  />
-        <span>{msg&&!passwordRef.current.value?msg:""}</span>
-            <br />
-            <input ref={cnfPasswordRef}  type="password" placeholder='*****' />
-        <span>{msg&&!cnfPasswordRef.current.value?msg:""}</span>
-            <br />
-            <button >SignUp</button>
-        </form>
+        <div className="formContainer">
+            <form onSubmit={handleSubmit}>
+                <div className="loginForm">
+                    <h1>SignUp </h1>
+                    <div className="input-msg">
+                        <input ref={nameRef} type="text" placeholder='Enter Name' />
+                        <span>{msg&&!nameRef.current.value?msg:""}</span>
+                    </div>
+                    
+                    <div className="input-msg">
+                        <input ref={passwordRef} type="password" placeholder='*****'  />
+                        <span>{msg&&!passwordRef.current.value?msg:""}</span>
+                    </div>
+                    
+                    <div className="input-msg">
+                        <input ref={cnfPasswordRef}  type="password" placeholder='*****' />
+                        <span>{msg&&!cnfPasswordRef.current.value?msg:""}</span>
+                    </div>
+                    
+                    <button >SignUp</button>
+                </div>  
+            
+            </form>
+            
+        </div>
+        
     </div>
   )
 }

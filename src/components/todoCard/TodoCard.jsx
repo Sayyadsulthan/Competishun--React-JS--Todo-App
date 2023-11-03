@@ -4,25 +4,22 @@ function TodoBodyCard({index,todo, updateTodo, removeTodo}) {
 
   const [isEditable, setIsEditable]= useState(false)
   const [isCompleted,setIsCompleted]= useState(todo.completed)
-  const [loading, setLoading]= useState(true)
-
   const titleRef = useRef()
-    useEffect(()=>{
-      
-      setLoading(false)
-    },[todo])
+  
+  useEffect(()=>{
+    titleRef.current.value = todo.title
+    return 
+  },[])
 
     const handleEditable=()=>{
       setIsEditable(!isEditable)
     }
     const handleUpdate=()=>{
-      setLoading(true)
+      
       setIsEditable(false)
-      console.log(isEditable)
       updateTodo(index,{title: titleRef.current.value,status:isCompleted} )
-      setTimeout(()=>setLoading(false),0)
+     
     }
-
 
   return (
     <>
@@ -32,7 +29,7 @@ function TodoBodyCard({index,todo, updateTodo, removeTodo}) {
                         <div className="textLeft">
                           
 
-                          <input ref={titleRef} type="text" defaultValue={todo.title}   disabled={!isEditable} />
+                          <input ref={titleRef} type="text"    disabled={!isEditable} />
                         
                           
                           <div className="todoEditBtn">

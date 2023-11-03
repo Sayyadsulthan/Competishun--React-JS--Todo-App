@@ -5,12 +5,190 @@
 }
 .App {
   text-align: center;
+  
+}
+.navWrapper{
+  height: 60px;
+  background: rgb(181,181,230);
+background: linear-gradient(308deg, rgba(181,181,230,1) 0%, rgba(27,194,139,1) 40%, rgba(0,212,255,1) 100%);
+}
+
+.navContainer{
+  padding: 0 10px;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  
+}
+
+.navLeft img{
+  /* position: relative; */
+  /* width: 50px; */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.navBtns{
+  display: flex;
+  padding: 10px;
+  /* height: 40px; */
+}
+
+.navBtns a{
+  text-decoration: none;
+}
+
+.navBtns div{
+  width: 60px;
+  height: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  margin-right: 10px;
+  background: linear-gradient(60deg, skyblue, blue);
+  color: aliceblue;
+}
+
+/* .navBtns img{
+  position: relative;
+  border-radius: 40%;
+  height: 100%;
+  width: 100%;
+  
+} */
+.navBtns .logoutBtn{
+  background: none ;
+  position: relative;
+  bottom: 10px;
+  display: flex;
+  padding: 10px;
+  overflow: hidden;
+  border: none;
+  border-radius:50%;
+  
+}
+
+.navBtns .logoutBtn img{
+  border-radius:40%;
+  width: 100%;
+  height: 100%;
+}
+
+.homeWrapper{
+  /* background: linear-gradient(45deg, rgb(169, 144, 144) 40%, rgb(74, 74, 212) 30%, rgb(130, 116, 116) 80%  100%); */
+  height: 100vh;
+  background: rgb(2,0,36);
+background: linear-gradient(326deg, rgba(2,0,36,1) 0%, rgba(27,194,139,1) 38%, rgba(0,212,255,1) 100%);
+  padding-top: 10px;
 }
 
 img{
   position: relative;
   width: 50%;
   height: 50%;
+}
+/* todo create form */
+.todoCreate{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 10px;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 10px;
+}
+.todoCreate form{
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+.todoForm{
+  display: flex;
+  width: 100%;
+  height: 40px;
+  justify-content: center;
+  /* border-top: 0.4px solid rgb(100, 93, 93); */
+  border-radius: 10px;
+}
+
+.todoForm input, .todoForm button {
+  padding: 0px 10px;
+  font-size: larger;
+  width: 60%;
+}
+
+.todoForm input{
+  background: transparent;
+  border: 0.2px solid;
+  color: azure;
+}
+
+.createTodoBtn{
+  background-color: aliceblue;
+  display: flex;
+  width: 25%;
+  /* height: 95%; */
+  /* overflow-y: hidden; */
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 1px 1px 2px 1px black;
+  justify-content: center;
+  align-items: center;
+}
+.createTodoBtn:hover{
+  box-shadow: 1px 1px 2px 2px black;
+}
+.todoForm button:active{
+  width: 80%;
+  height: 80%;
+  font-size: large;
+  
+}
+.todoForm button {
+  background-color: rgb(252 252 172 / 48%);
+  width: 90%;
+  height: 80%;
+  text-shadow: 0.5px 1px 0px ;
+  font-family: sans-serif;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+/* todo panel */
+.todoPanel{
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid black;
+  border-radius: 10px ;
+  width: 60%;
+  margin: auto;
+  overflow: hidden;
+  background-color: antiquewhite;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+
+.todoHead{
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  padding: 10px;
+  
+  box-shadow: 0px 1px 1px;
+  /* border-radius: 10px; */
+  /* height: 100%; */
+  background: linear-gradient(10deg ,white, rgb(235, 195, 135), white);
+}
+
+.todoTitle{
+  font-size: larger;
+  font-weight: 600;
+  font-family: sans-serif;
 }
 
 /* Panel Card  */
@@ -22,7 +200,7 @@ img{
   /* background-color: antiquewhite; */
   background-image: linear-gradient(to right, rgba(255,0,0,0)3%, rgb(234, 97, 97),rgba(255,0,0,0));
   gap: 20px;
-  margin-top: 10px;
+  margin-bottom: 10px;
   flex:  1 0 0;
   
 }
@@ -43,21 +221,26 @@ img{
   border-radius: 10px;
   border-right: 0.4px solid sandybrown;
   border-left: 0.4px solid rgb(179, 101, 32);
-  box-shadow:2px 2px 1px rgb(75, 68, 68);
+  box-shadow:1px 2px 1px 1px rgb(75, 68, 68);
 }
 .todoText input{
   height: 50px;
   width: 100%;
   position: relative;
+  left: 10px;
   font-size: large;
   font-weight: 600;
   /* height: 100%; */
   padding: 0;
   margin: 0;
+  padding-left: 5px;
+  box-shadow: 1px 1px 2px  black;
+  border-radius: 10px;
+  text-transform: capitalize;
 }
 .todoEditBtn{
   position: relative;
-  left: -13%;
+  left: -16%;
 }
 .todoText img{
   height: 100%;
@@ -77,7 +260,7 @@ img{
 
 /* todo buttons */
 .todoButtons{
-  width: 30%;
+  width: 40%;
   justify-content: space-around;
   border-radius: 10px;
   border-left: 0.3px solid black;
@@ -101,4 +284,58 @@ img{
 
 .todoStatusCheckBtn img{
   padding: 10px;
+}
+
+/* SIGNUP PAGE */
+.signUpWrapper, .signInWrapper{
+  height: 100vh;
+  background: rgb(2,0,36);
+background: linear-gradient(326deg, rgba(2,0,36,1) 0%, rgba(27,194,139,1) 38%, rgba(0,212,255,1) 100%);
+  padding-top: 10px;
+
+  /* display: flex;
+  justify-content: center; */
+}
+
+/* .loginForm{
+  border: 1px solid black;
+  width: 40%;
+  margin: auto;
+  border-radius: 20px;
+  background-color: white;
+} */
+
+.formContainer{
+  border: 1px solid black;
+  width: 40%;
+  margin: auto;
+  padding-bottom: 10px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.loginForm h1{
+  border-bottom: 1px solid black;
+}
+
+.input-msg{
+  width: 70%;
+  margin: 10px auto;
+  border-bottom: 1px solid black;
+}
+
+.loginForm input{
+  width: 100%;
+  border: none;
+}
+.loginForm button{
+  width: 100px;
+  /* width: 60px; */
+  height: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  margin-right: 10px;
+  background: linear-gradient(60deg, skyblue, blue);
+  color: aliceblue;
 }

@@ -1,22 +1,21 @@
 import React, { useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../provider/AuthProvider';
 
 export default function SignIn() {
     const [msg, setMsg]= useState('');
     const nameRef = useRef()
     const passwordRef= useRef()
-    const cnfPasswordRef= useRef()
     const history = useNavigate()
+    const {user, updateUser}= useAuth()
 
     const handleSubmit =(e)=>{
         e.preventDefault();
         // console.log(passwordRef)
-        if(!nameRef.current.value|| !passwordRef.current.value || !cnfPasswordRef.current.value){
+        if(!nameRef.current.value|| !passwordRef.current.value ){
             setMsg("required!!")
         }
-        else if(passwordRef.current.value !== cnfPasswordRef.current.value){
-            setMsg("Password Not Matches with Confirm Password!!!")
-        }else{
+        else{
             const userData = localStorage.getItem("setPass");
             
             let user = {name:nameRef.current.value, password:passwordRef.current.value}
@@ -29,23 +28,37 @@ export default function SignIn() {
                 return;
             }
                 setMsg('')
+                updateUser(user)
                 history('/')
         }
     }
 
+    if(user){
+        return <Navigate to="/" />
+    }
+
   return (
-    <div>
+    <div className='signInWrapper'>
+        <div className="formContainer">
+            <form onSubmit={handleSubmit}>
+                <div className="loginForm">
+                    <h1>Sign In </h1>
+
+                    <div className="input-msg">
+                        <input ref={nameRef} type="text" placeholder='Enter Name' />
+                        <span>{msg&&!nameRef.current.value?msg:""}</span>
+                    </div>
+                    
+                    <div className="input-msg">
+                        <input ref={passwordRef} type="password" placeholder='*****'  />
+                        <span>{msg&&!passwordRef.current.value?msg:""}</span>
+                    </div>
+                    
+                    <button >Sign In</button>
+                </div>
+            </form>
+        </div>
         
-        <form onSubmit={handleSubmit}>
-            <input ref={nameRef} type="text" placeholder='Enter Name' />
-            <span>{msg? msg:""}</span>
-            <br />
-            <input ref={passwordRef} type="password" placeholder='*****'  />
-            <br />
-            <input ref={cnfPasswordRef}  type="password" placeholder='*****' />
-            <br />
-            <button >SignIn</button>
-        </form>
     </div>
   )
 }

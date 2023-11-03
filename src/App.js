@@ -1,9 +1,23 @@
 import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import Navbar from "./components/navbar/Navbar";
+import { useAuth } from "./provider/AuthProvider";
+
+const ProtectedRoute = ({children}) => {
+  const auth = useAuth();
+  if (auth.user) {
+    return children;
+  }
+
+  return <Navigate to="/signin" />;
+};
 
 function App() {
   const router = createBrowserRouter([
@@ -13,7 +27,11 @@ function App() {
       children: [
         {
           index: true,
-          element: <HomePage />,
+          element: (
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "signin",
@@ -27,7 +45,6 @@ function App() {
   return (
     <>
       <div className="App">
-        <h1>App Component</h1>
         <RouterProvider router={router} />
       </div>
     </>
