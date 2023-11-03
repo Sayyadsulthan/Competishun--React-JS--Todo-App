@@ -1,38 +1,104 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+img{
+  position: relative;
+  width: 50%;
+  height: 50%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Panel Card  */
+.todoRow{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 8px 10px;
+  border-top: 0.5px solid ;
+  /* background-color: antiquewhite; */
+  background-image: linear-gradient(to right, rgba(255,0,0,0)3%, rgb(234, 97, 97),rgba(255,0,0,0));
+  gap: 20px;
+  margin-top: 10px;
+  flex:  1 0 0;
+  
 }
 
-.App-link {
-  color: #61dafb;
+.todoText ,.todoButtons{
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  /* flex: 1 0 0; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todoText{
+  flex-grow: 0.5;
+  /* background-color: red; */
+  justify-content: space-around;
+  align-items: center;
+  height: 70px;
+  border-radius: 10px;
+  border-right: 0.4px solid sandybrown;
+  border-left: 0.4px solid rgb(179, 101, 32);
+  box-shadow:2px 2px 1px rgb(75, 68, 68);
+}
+.todoText input{
+  height: 50px;
+  width: 100%;
+  position: relative;
+  font-size: large;
+  font-weight: 600;
+  /* height: 100%; */
+  padding: 0;
+  margin: 0;
+}
+.todoEditBtn{
+  position: relative;
+  left: -13%;
+}
+.todoText img{
+  height: 100%;
+  padding: 0%;
+  margin: 0%;
+}
+
+
+.textLeft {
+  display: flex;
+  flex-direction: row;
+  /* padding: 10px 2px; */
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0.5;
+}
+
+/* todo buttons */
+.todoButtons{
+  width: 30%;
+  justify-content: space-around;
+  border-radius: 10px;
+  border-left: 0.3px solid black;
+  border-right: 0.3px solid black;
+  box-shadow:2px 2px 1px rgb(75, 68, 68);
+  height: 70px;
+}
+
+.todoButtons img{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.todoStatusCheckBtn{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+
+.todoStatusCheckBtn img{
+  padding: 10px;
 }
