@@ -38,7 +38,14 @@ const useAuthHook = () => {
   const updateUser = (data) => {
     if (data) {
       setUser(data);
+      return {
+        success: true,
+      };
     }
+
+    return {
+      success: false,
+    };
   };
 
   const createTodo = (title) => {

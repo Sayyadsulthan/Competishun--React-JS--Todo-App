@@ -22,14 +22,17 @@ export default function SignIn() {
             // let res = JSON.parse(userData)
             // console.log(JSON.stringify(user)==userData)
             // console.log(res)
-            
+            // console.log("user")
             if(JSON.stringify(user)!==userData){
                 setMsg("Invalid Credentials!!!")
+                setTimeout(()=>setMsg(""), 3000)
+                console.log("user2")
                 return;
             }
                 setMsg('')
                 updateUser(user)
-                history('/')
+                    history('/')
+                
         }
     }
 
@@ -44,6 +47,9 @@ export default function SignIn() {
                 <div className="loginForm">
                     <h1>Sign In </h1>
 
+                        <span>
+                            {msg&&nameRef.current.value&& passwordRef.current.value?msg:""}
+                            </span>
                     <div className="input-msg">
                         <input ref={nameRef} type="text" placeholder='Enter Name' />
                         <span>{msg&&!nameRef.current.value?msg:""}</span>

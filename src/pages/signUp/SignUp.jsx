@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
+
 export default function SignUp() {
     const [msg, setMsg]= useState('');
 
@@ -9,9 +10,6 @@ export default function SignUp() {
     const cnfPasswordRef= useRef()
     const history =useNavigate()
 
-    useEffect(()=>{
-        setTimeout(()=>setMsg("") ,2000)
-    },[msg])
 
     const handleSubmit =(e)=>{
         e.preventDefault();
@@ -21,6 +19,7 @@ export default function SignUp() {
         }
         else if(passwordRef.current.value !== cnfPasswordRef.current.value){
             setMsg("Password Not Matches with Confirm Password!!!")
+            setTimeout(()=>setMsg("") ,2000)
         }else{
             setMsg('')
             let user = {name:nameRef.current.value, password:passwordRef.current.value}
@@ -32,7 +31,7 @@ export default function SignUp() {
   return (
     <div className='signUpWrapper'>
         
-        <span>{msg&& passwordRef.current.value!==cnfPasswordRef.current.value? msg:""}</span>
+        <span>{msg&& passwordRef.current.value!==cnfPasswordRef.current.value && cnfPasswordRef.current.value!==""&&passwordRef.current.value!==""? msg:""}</span>
         
         <div className="formContainer">
             <form onSubmit={handleSubmit}>
@@ -57,7 +56,7 @@ export default function SignUp() {
                 </div>  
             
             </form>
-            
+
         </div>
         
     </div>
