@@ -10,7 +10,7 @@ import SignUp from "./pages/signUp/SignUp";
 import Navbar from "./components/navbar/Navbar";
 import { useAuth } from "./provider/AuthProvider";
 
-const ProtectedRoute = ({children}) => {
+const ProtectedRoute = ({ children }) => {
   const auth = useAuth();
   if (auth.user) {
     return children;

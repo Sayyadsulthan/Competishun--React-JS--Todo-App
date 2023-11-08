@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../provider/AuthProvider';
 
 
 export default function SignUp() {
     const [msg, setMsg]= useState('');
-
+    const auth = useAuth()
     const nameRef= useRef()
     const passwordRef= useRef()
     const cnfPasswordRef= useRef()
@@ -23,9 +24,14 @@ export default function SignUp() {
         }else{
             setMsg('')
             let user = {name:nameRef.current.value, password:passwordRef.current.value}
-            localStorage.setItem("setPass",JSON.stringify(user))
+            localStorage.setItem("setSignup",JSON.stringify(user))
+
             history('/signin')
         }
+    }
+
+    if(auth.user){
+        return history('/')
     }
 
   return (
